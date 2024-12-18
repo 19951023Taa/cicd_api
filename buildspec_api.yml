@@ -19,15 +19,15 @@ phases:
       - docker push $REPOSITORY_URI:latest || echo "Docker push failed"
       - docker push $REPOSITORY_URI:$IMAGE_TAG || echo "Docker push with tag failed"
       - printf '{"Version":"1.0","ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-      - sed -i -e "s#<ENV>#$ENV#" appspec.yml
+      - sed -i -e "s#<ENV>#$ENV#" appspec_api.yml
       - sed -i -e "s#<ENV>#$ENV#" taskdef.json
       - sed -i -e "s#<ACCOUNT_ID>#$ACCOUNT_ID#" taskdef.json
-      - cat appspec.yml
+      - cat appspec_api.yml
       - cat taskdef.json
 
 artifacts:
   files:
     - imageDetail.json
-    - appspec.yml
+    - appspec_api.yml
     - taskdef.json
 
