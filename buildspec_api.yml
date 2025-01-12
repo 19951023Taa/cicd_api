@@ -22,6 +22,7 @@ phases:
       - sed -i -e "s#<ENV>#$ENV#" appspec_api.yml
       - sed -i -e "s#<ENV>#$ENV#" taskdef_api.json
       - sed -i -e "s#<ACCOUNT_ID>#$ACCOUNT_ID#" taskdef_api.json
+      - sed -i -e "s#<DD_API_KEY>#$DD_API_KEY#" taskdef_api.json
       - cat appspec_api.yml
       - cat taskdef_api.json
 
