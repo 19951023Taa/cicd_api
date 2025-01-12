@@ -1,4 +1,9 @@
 version: 0.2
+
+env:
+  parameter-store:
+    DD_API_KEY: "DD_API_KEY"
+    
 phases:
   pre_build:
     commands:
