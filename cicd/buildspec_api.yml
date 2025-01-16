@@ -15,7 +15,8 @@ phases:
   build:
     commands:
       - echo "Building the Docker image..."
-      - docker build -t $REPOSITORY_URI:latest ../
+      - ls -l
+      - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
@@ -24,16 +25,16 @@ phases:
       - docker push $REPOSITORY_URI:latest || echo "Docker push failed"
       - docker push $REPOSITORY_URI:$IMAGE_TAG || echo "Docker push with tag failed"
       - printf '{"Version":"1.0","ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-      - sed -i -e "s#<ENV>#$ENV#" appspec_api.yml
-      - sed -i -e "s#<ENV>#$ENV#" taskdef_api.json
-      - sed -i -e "s#<ACCOUNT_ID>#$ACCOUNT_ID#" taskdef_api.json
-      - sed -i -e "s#<DD_API_KEY>#$DD_API_KEY#" taskdef_api.json
-      - cat appspec_api.yml
-      - cat taskdef_api.json
+      - sed -i -e "s#<ENV>#$ENV#" cicd/appspec_api.yml
+      - sed -i -e "s#<ENV>#$ENV#" cicd/taskdef_api.json
+      - sed -i -e "s#<ACCOUNT_ID>#$ACCOUNT_ID#" cicd/taskdef_api.json
+      - sed -i -e "s#<DD_API_KEY>#$DD_API_KEY#" cicd/taskdef_api.json
+      - cat cicd/appspec_api.yml
+      - cat cicd/taskdef_api.json
 
 artifacts:
   files:
     - imageDetail.json
-    - appspec_api.yml
-    - taskdef_api.json
+    - cicd/appspec_api.yml
+    - cicd/taskdef_api.json
 
