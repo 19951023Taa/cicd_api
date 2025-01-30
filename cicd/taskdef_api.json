@@ -15,7 +15,7 @@
             "essential": true,
             "environment": [
                 {
-                    "name": "DBエンドポイント",
+                    "name": "TEST",
                     "value": "DB_xxxxxxxxxxxxxx"
                 },
                 {
