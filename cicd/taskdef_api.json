@@ -16,7 +16,7 @@
             "environment": [],
             "environmentFiles": [
                 {
-                    "value": "arn:aws:s3:::keirin-bet-st-ecs-env-bucket-01/api/st-api.env",
+                    "value": "arn:aws:s3:::keirin-bet-<ENV>-ecs-env-bucket-01/api/<ENV>-api.env",
                     "type": "s3"
                 }
             ],
